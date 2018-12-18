@@ -58,9 +58,13 @@ if ! type "aws" > /dev/null; then
   rm -Rf ./awscli-bundle/
 fi
 
-
 ### install adfs-cli
-if [ -f ~/.dotfiles/is_work ]; then
+if [ -f ${WORKDIR}/.dotfiles/is_work ]; then
   cd ${WORKDIR}/
   ## install adfs-cli clone and link binary
-fi
+  if [ ! -d "adfs-cli" ]; then
+    git clone https://github.conti.de/continental-cloud/adfs-cli
+    ln -s ./adfs-cli/releases/adfs-cli-macos ~/bin/adfs-cli
+    else
+    echo "adfs-cli already installed!"
+  fi
