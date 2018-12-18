@@ -18,6 +18,7 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
+zplug mafredri/zsh-async, as:plugin, from:github
 zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 # Install plugins if there are plugins that have not been installed
@@ -37,3 +38,4 @@ bindkey '^ ' autosuggest-execute
 # enable ..<tab>
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 
+export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Users/${USER}/Library/Python/2.7/bin:/usr/local/bin:${PATH}"
