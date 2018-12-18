@@ -11,6 +11,7 @@ source ~/.zplug/init.zsh
 zplug zsh-users/zsh-syntax-highlighting, as:plugin, from:github
 zplug zsh-users/zsh-autosuggestions, as:plugin, from:github
 zplug "plugins/vscode", from:oh-my-zsh
+zplug "plugins/aws", from:oh-my-zsh
 zplug "plugins/terraform", from:oh-my-zsh
 zplug "plugins/kubectl", from:oh-my-zsh
 zplug "plugins/docker-compose", from:oh-my-zsh
