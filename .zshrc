@@ -39,3 +39,4 @@ bindkey '^ ' autosuggest-execute
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 
 export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Users/${USER}/Library/Python/2.7/bin:/usr/local/bin:${PATH}"
+export SHELL="/bin/zsh"
