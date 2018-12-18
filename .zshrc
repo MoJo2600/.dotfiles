@@ -1,9 +1,9 @@
-if [ -f ~/.dotfiles/is_work ]; then
-  source ~/.dotfiles/work.zsh
+if [ -f ~/workspace/.dotfiles/is_work ]; then
+  source ~/workspace/.dotfiles/work.zsh
 fi
 
-if [ -f ~/.dotfiles/.zsh_aliases ]; then
-	source ~/.dotfiles/.zsh_aliases
+if [ -f ~/workspace/.dotfiles/.zsh_aliases ]; then
+  source ~/workspace/.dotfiles/.zsh_aliases
 fi
 
 source ~/.zplug/init.zsh
