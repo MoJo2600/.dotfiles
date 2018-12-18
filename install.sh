@@ -1,6 +1,7 @@
 #/bin/bash
 
 export WORKDIR=~/workspace
+cd ${WORKDIR}/
 
 ### install home brew
 if ! type "brew" > /dev/null; then
@@ -16,8 +17,6 @@ if [ ! -d ~/.zplug ]; then
   else
   echo "zplug already installed!"
 fi
-
-cd ${WORKDIR}/
 
 if [ ! -d "tmux-config" ]; then
   git clone https://github.com/christofwe/tmux-config.git
