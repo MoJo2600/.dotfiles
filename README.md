@@ -13,3 +13,6 @@
 
 ## 3) create file is_work if work notebook
 `touch ~/workspace/.dotfiles/is_work`
+
+## 4) run install script
+`~/workspace/.dotfiles/.install.sh`
