@@ -68,3 +68,4 @@ if [ -f ${WORKDIR}/.dotfiles/is_work ]; then
     else
     echo "adfs-cli already installed!"
   fi
+fi
