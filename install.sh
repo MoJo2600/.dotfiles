@@ -58,3 +58,10 @@ if ! type "aws" > /dev/null; then
   sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
   rm -Rf ./awscli-bundle/
 fi
+
+
+### install adfs-cli
+if [ -f ~/.dotfiles/is_work ]; then
+  cd ${WORKDIR}/
+  ## install adfs-cli clone and link binary
+fi
