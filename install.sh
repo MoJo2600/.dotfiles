@@ -57,7 +57,7 @@ if ! type "aws" > /dev/null 2>&1; then
   curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
   unzip awscli-bundle.zip
   sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
-  rm -Rf ./awscli-bundle/
+  rm -Rf ./awscli-bundle/ awscli-bundle.zip
 fi
 
 ### install tools for work
