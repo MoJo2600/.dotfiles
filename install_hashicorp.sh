@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if uname -a | grep "Darwin Kernel" > /dev/null; then
+if uname -a | grep "Darwin Kernel" > /dev/null 2>&1; then
   ARCH="darwin_amd64"
   else
   ARCH="linux_amd64"
