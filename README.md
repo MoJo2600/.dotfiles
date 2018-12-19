@@ -15,4 +15,4 @@
 `touch ~/workspace/.dotfiles/is_work`
 
 ## 4) run install script
-`~/workspace/.dotfiles/.install.sh`
+`~/workspace/.dotfiles/install.sh`
