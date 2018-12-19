@@ -3,6 +3,14 @@
 export WORKDIR=~/workspace
 cd ${WORKDIR}/
 
+### set proxy
+if [ -f ${WORKDIR}/.dotfiles/is_work ]; then
+  PROXY_URL="http://cias.geoaws.com:8080/"
+  export http_proxy=${PROXY_URL}
+  export https_proxy=${PROXY_URL}
+  export noproxy="localhost, 127.0.0.1,.conti.de,.contiwan.com"
+fi
+
 ### install home brew
 if ! type "brew" > /dev/null 2>&1; then
   /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
