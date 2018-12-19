@@ -1,5 +1,6 @@
 if [ -f ~/workspace/.dotfiles/is_work ]; then
   source ~/workspace/.dotfiles/work.zsh
+  source ~/workspace/.dotfiles/.zsh_work_aliases
 fi
 
 if [ -f ~/workspace/.dotfiles/.zsh_aliases ]; then

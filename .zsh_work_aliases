@@ -1,0 +1,77 @@
+alias cdw="cd ~/workspace"
+alias cds="cd ~/workspace/swiss-army-knife/sandbox/management/"
+
+#some aws short cuts
+export ACCOUNT_INFO_URL="http://10.46.0.188:5000/"
+
+aws_get_subnet_info() {
+  aws ec2 describe-subnets --query 'Subnets[*].[VpcId,SubnetId,CidrBlock,Tags[?Key==`aws:cloudformation:stack-name`] | [0].Value]' --output text ${1} | sort
+}
+
+aws_get_instance_ip() {
+  aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,PrivateIpAddress,State.Name,ImageId,LaunchTime,Tags[?Key==`Name`] | [0].Value,Tags[?Key==`datalake-appliance`] | [0].Value]' --filters "Name=tag:Name,Values=*${1}*" --output text
+}
+
+aws_get_id_by_conti_id() {
+  if [ $# -eq 1 ]; then 
+    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term ${1} '($term | split(",") | .[]) as $in | .[] | select(.account_id == $in) | .aws_account_id'
+  else
+    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term ${1} '($term | split(",") | .[]) as $in | .[] | select(.account_id == $in)'
+  fi
+}
+
+aws_get_conti_id_by_id() {
+  if [ $# -eq 1 ]; then 
+    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term ${1} '($term | split(",") | .[]) as $in | .[] | select(.aws_account_id == $in) | .account_id'
+  else
+    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term ${1} '($term | split(",") | .[]) as $in | .[] | select(.aws_account_id == $in)'
+  fi
+}
+
+aws_get_accounts_sorted() {
+    curl -s ${ACCOUNT_INFO_URL} | jq 'sort_by(.account_id)'
+}
+
+aws_get_id_by_ou() {
+  if [ $# -eq 1 ]; then 
+    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term "${1}" '.[] | select(.request.target_ou == $term) | .aws_account_id'
+  else
+    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term "${1}" '.[] | select(.request.target_ou == $term)'
+  fi
+}
+
+aws_get_id_by_description() {
+  if [ $# -eq 1 ]; then 
+    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term "${1}" '.[] | select(.account_description | test($term;"i"))? | .aws_account_id'
+  else
+    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term "${1}" '.[] | select(.account_description | test($term;"i"))?'
+  fi
+}
+
+aws_download_account_info(){
+   curl -s ${ACCOUNT_INFO_URL} | jq 'map({"id":.aws_account_id, "division":.request.target_ou, "name":.account_description, "contiId":.account_id})' > ~/workspace/swiss-army-knife/helper/map-all-aws.json
+}
+
+aws_move_account_to_excluded_continenal_cloud(){
+  for ACCOUNT in "$@"; do
+    aws organizations move-account --account-id $ACCOUNT --source-parent-id ou-3zp6-jky3f1xi  --destination-parent-id ou-3zp6-yq08sy9l;
+  done
+}
+
+aws_move_account_to_excluded_automotive(){
+  for ACCOUNT in "$@"; do
+    aws organizations move-account --account-id $ACCOUNT --source-parent-id ou-3zp6-xx7glhp4  --destination-parent-id ou-3zp6-drutavzl;
+  done
+}
+
+aws_move_account_to_advanced_continenal_cloud(){
+  for ACCOUNT in "$@"; do
+    aws organizations move-account --account-id $ACCOUNT --source-parent-id ou-3zp6-jky3f1xi  --destination-parent-id ou-3zp6-ok1441pg;
+  done
+}
+
+aws_move_account_to_advanced_automotive(){
+  for ACCOUNT in "$@"; do
+    aws organizations move-account --account-id $ACCOUNT --source-parent-id ou-3zp6-xx7glhp4  --destination-parent-id ou-3zp6-22d9xsy4;
+  done
+}

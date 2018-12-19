@@ -1,14 +1,3 @@
 #file system
 alias ls='ls -G'
 alias ll='ls -al'
-
-alias cdw="cd ~/workspace"
-alias cds="cd ~/workspace/swiss-army-knife/sandbox/management/"
-
-#some aws short cuts
-aws_get_subnet_info() {
-  aws ec2 describe-subnets --query 'Subnets[*].[VpcId,SubnetId,CidrBlock,Tags[?Key==`aws:cloudformation:stack-name`] | [0].Value]' --output text ${1} | sort
-}
-aws_get_instance_ip() {
-  aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,PrivateIpAddress,State.Name,ImageId,LaunchTime,Tags[?Key==`Name`] | [0].Value,Tags[?Key==`datalake-appliance`] | [0].Value]' --filters "Name=tag:Name,Values=*${1}*" --output text
-}

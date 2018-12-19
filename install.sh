@@ -9,7 +9,7 @@ if ! type "brew" > /dev/null 2>&1; then
   else
   echo "brew.sh already installed!"
 fi
-brew install pv tmux zsh
+brew install jq pv tmux zsh
 
 ### install zplug
 if [ ! -d ~/.zplug ]; then
