@@ -60,7 +60,9 @@ fi
 
 ### install adfs-cli
 if [ -f ${WORKDIR}/.dotfiles/is_work ]; then
+  
   cd ${WORKDIR}/
+  
   ## install adfs-cli clone and link binary
   if [ ! -d "adfs-cli" ]; then
     git clone https://github.conti.de/continental-cloud/adfs-cli
@@ -68,4 +70,12 @@ if [ -f ${WORKDIR}/.dotfiles/is_work ]; then
     else
     echo "adfs-cli already installed!"
   fi
+
+  ## install hashicorp tools
+  if ! type "terraform" > /dev/null; then
+    ./install_hashicorp.sh
+    else
+    echo "terraform already installed!"
+  fi
+
 fi
