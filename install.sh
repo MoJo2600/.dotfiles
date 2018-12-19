@@ -18,6 +18,7 @@ if [ ! -d ~/.zplug ]; then
   echo "zplug already installed!"
 fi
 
+### install tmux config
 if [ ! -d "tmux-config" ]; then
   git clone https://github.com/christofwe/tmux-config.git
   ./tmux-config/install.sh
@@ -25,6 +26,7 @@ if [ ! -d "tmux-config" ]; then
   echo "tmux-config already installed!"
 fi
 
+### install powerline fonts
 if [ ! -d "fonts" ]; then
   git clone https://github.com/powerline/fonts.git --depth=1
   ./fonts/install.sh
@@ -32,6 +34,7 @@ if [ ! -d "fonts" ]; then
   echo "powerline fonts already installed!"
 fi
 
+### install tmux bash completion
 if [ ! -d "tmux-bash-completion" ]; then
   git clone https://github.com/imomaliev/tmux-bash-completion.git
   else
@@ -51,29 +54,26 @@ ln -s ${WORKDIR}/.dotfiles/.zshrc ~/.zshrc
 
 ### install AWS cli
 if ! type "aws" > /dev/null; then
-  cd ${WORKDIR}/
   curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
   unzip awscli-bundle.zip
   sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
   rm -Rf ./awscli-bundle/
 fi
 
-### install adfs-cli
+### install tools for work
 if [ -f ${WORKDIR}/.dotfiles/is_work ]; then
-  
-  cd ${WORKDIR}/
   
   ## install adfs-cli clone and link binary
   if [ ! -d "adfs-cli" ]; then
     git clone https://github.conti.de/continental-cloud/adfs-cli
-    ln -s ./adfs-cli/releases/adfs-cli-macos ~/bin/adfs-cli
+    ln -s ${WORKDIR}/adfs-cli/releases/adfs-cli-macos /usr/local/bin/adfs-cli
     else
     echo "adfs-cli already installed!"
   fi
 
   ## install hashicorp tools
-  if ! type "terraform" > /dev/null; then
-    ./install_hashicorp.sh
+  if ! type "terraform" 2>&1 /dev/null; then
+    ${WORKDIR}/.dotfiles/install_hashicorp.sh
     else
     echo "terraform already installed!"
   fi
