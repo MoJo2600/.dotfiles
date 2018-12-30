@@ -72,7 +72,7 @@ fi
 
 ### install colorls
 if ! type "colorls" > /dev/null 2>&1; then
-  gem install colorls
+  sudo gem install colorls
 fi
 
 ### install tools for work
