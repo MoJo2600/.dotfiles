@@ -1,3 +1,5 @@
 #file system
 alias ls='ls -G'
 alias ll='ls -al'
+
+alias lc='colorls -lA --sd'

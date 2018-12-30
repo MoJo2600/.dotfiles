@@ -17,7 +17,14 @@ if ! type "brew" > /dev/null 2>&1; then
   else
   echo "brew.sh already installed!"
 fi
+
+### brew install some tools
 brew install jq pv tmux zsh
+brew cask install iterm2
+
+### brew install fonts
+brew tap caskroom/fonts
+brew cask install font-hack-nerd-font
 
 ### install zplug
 if [ ! -d ~/.zplug ]; then
@@ -32,14 +39,6 @@ if [ ! -d "tmux-config" ]; then
   ./tmux-config/install.sh
   else
   echo "tmux-config already installed!"
-fi
-
-### install powerline fonts
-if [ ! -d "fonts" ]; then
-  git clone https://github.com/powerline/fonts.git --depth=1
-  ./fonts/install.sh
-  else
-  echo "powerline fonts already installed!"
 fi
 
 ### install tmux bash completion
@@ -60,12 +59,20 @@ if [ -f ~/.zshrc ]; then
 fi
 ln -s ${WORKDIR}/.dotfiles/.zshrc ~/.zshrc
 
+### change shell
+chsh -s /bin/zsh
+
 ### install AWS cli
 if ! type "aws" > /dev/null 2>&1; then
   curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
   unzip awscli-bundle.zip
   sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
   rm -Rf ./awscli-bundle/ awscli-bundle.zip
+fi
+
+### install colorls
+if ! type "colorls" > /dev/null 2>&1; then
+  gem install colorls
 fi
 
 ### install tools for work

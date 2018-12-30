@@ -1,3 +1,13 @@
+POWERLEVEL9K_MODE='nerdfont-complete'
+# default POWERLEVEL9K
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+
+# custom POWERLEVEL9K
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context aws dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time battery)
+
+
 if [ -f ~/workspace/.dotfiles/is_work ]; then
   source ~/workspace/.dotfiles/work.zsh
   source ~/workspace/.dotfiles/.zsh_work_aliases
@@ -11,6 +21,7 @@ source ~/.zplug/init.zsh
 
 zplug zsh-users/zsh-syntax-highlighting, as:plugin, from:github
 zplug zsh-users/zsh-autosuggestions, as:plugin, from:github
+zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
 zplug "plugins/vscode", from:oh-my-zsh
 zplug "plugins/aws", from:oh-my-zsh
 zplug "plugins/terraform", from:oh-my-zsh
@@ -21,7 +32,6 @@ zplug "lib/history", from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh
 zplug "plugins/vi-mode", from:oh-my-zsh
 zplug mafredri/zsh-async, as:plugin, from:github
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
