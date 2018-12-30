@@ -50,8 +50,7 @@ bindkey '^ ' autosuggest-execute
 # enable ..<tab>
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 
-export PATH="/usr/local/bin:${PATH}"
-export SHELL="/bin/zsh"
+export PATH="/usr/local/bin:/usr/local/aws/bin:${PATH}"
 
 # some completion 
 source /usr/local/aws/bin/aws_zsh_completer.sh
