@@ -3,7 +3,6 @@
 
 ## 1) install macOS applications
 - Visual Studio Code [download](https://code.visualstudio.com/download)
-- iTerm2 - replacement for Terminal [download](https://www.iterm2.com/downloads.html)
 - ForkLift 3 - Dual pane file manager for macOS [download](https://binarynights.com/)
 - Magnet - Window manager for macOS [website](http://magnet.crowdcafe.com/)
 - Copy'em Paste - clipboard manager [website](http://apprywhere.com/copy-em-paste.html)
