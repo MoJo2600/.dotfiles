@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# check https://github.com/mathiasbynens/dotfiles/blob/master/.macos for more settings
+
 ### Dock 
 defaults write com.apple.dock static-only -bool TRUE
 defaults write com.apple.dock autohide -bool TRUE
