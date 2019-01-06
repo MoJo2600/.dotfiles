@@ -1,6 +1,8 @@
 alias cdw="cd ~/workspace"
 alias cds="cd ~/workspace/swiss-army-knife/sandbox/management/"
 
+alias usp="unset http_proxy https_proxy no_proxy"
+
 #some aws short cuts
 export ACCOUNT_INFO_URL="http://10.46.0.188:5000/"
 
