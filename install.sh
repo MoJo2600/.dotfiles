@@ -19,7 +19,7 @@ if ! type "brew" > /dev/null 2>&1; then
 fi
 
 ### brew install some tools
-brew install jq pv tmux zsh
+brew install jq pv tmux zsh zsh-completions
 brew cask install iterm2
 
 ### brew install fonts
