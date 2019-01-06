@@ -8,7 +8,7 @@ if [ -f ${WORKDIR}/.dotfiles/is_work ]; then
   PROXY_URL="http://cias.geoaws.com:8080/"
   export http_proxy=${PROXY_URL}
   export https_proxy=${PROXY_URL}
-  export noproxy="localhost, 127.0.0.1,.conti.de,.contiwan.com"
+  export no_proxy="localhost, 127.0.0.1,.conti.de,.contiwan.com"
 fi
 
 ### install home brew
