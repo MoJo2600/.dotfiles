@@ -16,9 +16,5 @@
 ## 4) run install script
 `~/workspace/.dotfiles/install.sh`
 
-## 5) setup iTerm2 to execute tmux script on startup
-iterm2 --> Preference --> Profiles
-
-Command: `/bin/zsh`
-
-Send text at start: `~/workspace/.dotfiles/tmux.sh`
+## 5) run macOS config script
+`~/workspace/.dotfiles/config_macOS.sh`
