@@ -3,6 +3,10 @@
 export WORKDIR=~/workspace
 cd ${WORKDIR}/
 
+### ask for the administrator password and update time stamp until `config_macOS.sh` has finished
+sudo -v
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 ### set proxy
 if [ -f ${WORKDIR}/.dotfiles/is_work ]; then
   PROXY_URL="http://cias.geoaws.com:8080/"
@@ -64,7 +68,7 @@ chsh -s /bin/zsh
 
 ### install AWS cli
 if ! type "aws" > /dev/null 2>&1; then
-  curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+  curl -s "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
   unzip awscli-bundle.zip
   sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
   rm -Rf ./awscli-bundle/ awscli-bundle.zip
