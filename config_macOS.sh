@@ -49,10 +49,17 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 #killall Finder
 
 
-### System
+### HIDs
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+defaults write -g com.apple.mouse.scaling 5
+
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
@@ -67,4 +74,4 @@ sudo pmset -c displaysleep 60
 
 
 # Get colortheme for iTerm
-curl https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Monokai%20Remastered.itermcolors -o Monokai\ Remastered.itermcolors
+curl -s https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Monokai%20Remastered.itermcolors -o Monokai\ Remastered.itermcolors
