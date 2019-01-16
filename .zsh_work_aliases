@@ -1,5 +1,6 @@
 alias cdw="cd ~/workspace"
 alias cds="cd ~/workspace/swiss-army-knife/sandbox/management/"
+alias aws_show_account_info='cat ~/workspace/swiss-army-knife/helper/map-all-aws.json'
 
 alias usp="unset http_proxy https_proxy no_proxy"
 
