@@ -72,6 +72,9 @@ sudo chflags nohidden /Volumes
 sudo pmset -b displaysleep 10
 sudo pmset -c displaysleep 60
 
+# turn of hibernation
+sudo pmset standby 0
+sudo pmset autopoweroff 0
 
 # Get colortheme for iTerm
 curl -s https://raw.githubusercontent.com/mbadolato/iTerm2-Color-Schemes/master/schemes/Monokai%20Remastered.itermcolors -o Monokai\ Remastered.itermcolors
