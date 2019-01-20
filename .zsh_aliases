@@ -1,5 +1,9 @@
 #file system
 alias ls='ls -G'
 alias ll='ls -al'
-
 alias lc='colorls -lA --sd'
+
+# edit files
+alias edit_work.zsh='vim ~/workspace/.dotfiles/work.zsh'
+alias edit_.zsh_aliases='vim ~/workspace/.dotfiles/.zsh_aliases'
+alias edit_.zsh_work_aliases='vim ~/workspace/.dotfiles/.zsh_work_aliases'
