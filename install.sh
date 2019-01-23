@@ -23,7 +23,7 @@ if ! type "brew" > /dev/null 2>&1; then
 fi
 
 ### brew install some tools
-brew install git-crypt jq pv tmux zsh zsh-completions
+brew install git-crypt gnupg jq pv tmux watch zsh zsh-completions
 brew cask install iterm2
 
 ### brew install fonts
