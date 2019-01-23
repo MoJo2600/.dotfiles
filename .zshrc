@@ -30,7 +30,6 @@ zplug "plugins/docker-compose", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh
-zplug "plugins/vi-mode", from:oh-my-zsh
 zplug mafredri/zsh-async, as:plugin, from:github
 
 # Install plugins if there are plugins that have not been installed
