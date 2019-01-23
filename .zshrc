@@ -16,9 +16,11 @@ zsh_adfscli_profile(){
 POWERLEVEL9K_CUSTOM_ADFSCLI_PROFILE="zsh_adfscli_profile"
 POWERLEVEL9K_CUSTOM_ADFSCLI_PROFILE_BACKGROUND="orange1"
 POWERLEVEL9K_CUSTOM_ADFSCLI_PROFILE_FOREGROUND="black"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_adfscli_profile dir vcs)
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_first_and_last"
+POWERLEVEL9K_SHORTEN_DIR_LENGTH="1"
+POWERLEVEL9K_SHORTEN_DELIMITER=".."
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context custom_adfscli_profile dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
-
 
 if [ -f ~/workspace/.dotfiles/is_work ]; then
   source ~/workspace/.dotfiles/work.zsh
@@ -43,6 +45,7 @@ zplug "plugins/git", from:oh-my-zsh
 zplug "lib/history", from:oh-my-zsh
 zplug "lib/clipboard", from:oh-my-zsh
 zplug mafredri/zsh-async, as:plugin, from:github
+zplug junegunn/fzf, use:"shell/*.zsh"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -55,8 +58,7 @@ fi
 # Then, source plugins and add commands to $PATH
 zplug load
 
-# ctrl + space for auto suggest
-bindkey '^ ' autosuggest-execute
+bindkey '^R' fzf-history-widget
 
 # enable ..<tab>
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
