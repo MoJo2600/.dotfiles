@@ -4,8 +4,20 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 #POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 
 # custom POWERLEVEL9K
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context aws dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time battery)
+zsh_adfscli_profile(){
+  if [ -d ~/.aws/adfs-running.lock ]; then
+    CURRENT_PROFILE=$(cat ~/.aws/current_profile)
+    echo -n "\uf270 ${CURRENT_PROFILE}"
+  else
+    echo -n ""
+  fi
+}
+
+POWERLEVEL9K_CUSTOM_ADFSCLI_PROFILE="zsh_adfscli_profile"
+POWERLEVEL9K_CUSTOM_ADFSCLI_PROFILE_BACKGROUND="orange1"
+POWERLEVEL9K_CUSTOM_ADFSCLI_PROFILE_FOREGROUND="black"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(custom_adfscli_profile dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
 
 
 if [ -f ~/workspace/.dotfiles/is_work ]; then
