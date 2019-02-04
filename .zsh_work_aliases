@@ -19,7 +19,8 @@ aws_get_id_by_conti_id() {
   if [ $# -eq 1 ]; then 
     curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term ${1} '($term | split(",") | .[]) as $in | .[] | select(.account_id == $in) | .aws_account_id'
   else
-    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term ${1} '($term | split(",") | .[]) as $in | .[] | select(.account_id == $in)'
+    #curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term ${1} '($term | split(",") | .[]) as $in | .[] | select(.account_id == $in)'
+    curl -s ${ACCOUNT_INFO_URL} | jq --arg term ${1} '[($term | split(",") | .[]) as $in | .[] | select(.account_id == $in)]'
   fi
 }
 
@@ -47,7 +48,8 @@ aws_get_id_by_description() {
   if [ $# -eq 1 ]; then 
     curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term "${1}" '.[] | select(.account_description | test($term;"i"))? | .aws_account_id'
   else
-    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term "${1}" '.[] | select(.account_description | test($term;"i"))?'
+    #curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term "${1}" '.[] | select(.account_description | test($term;"i"))?'
+    curl -s ${ACCOUNT_INFO_URL} | jq -r --arg term "${1}" '[.[] | select(.account_description | test($term;"i"))?]'
   fi
 }
 
