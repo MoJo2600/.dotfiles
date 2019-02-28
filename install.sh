@@ -84,7 +84,7 @@ if [ -f ${WORKDIR}/.dotfiles/is_work ]; then
   
   ## install adfs-cli clone and link binary
   if [ ! -d "adfs-cli" ]; then
-    git clone https://github.conti.de/continental-cloud/adfs-cli
+    git clone http://github.conti.de/continental-cloud/adfs-cli
     ln -s ${WORKDIR}/adfs-cli/releases/adfs-cli-macos /usr/local/bin/adfs-cli
     else
     echo "adfs-cli already installed!"
